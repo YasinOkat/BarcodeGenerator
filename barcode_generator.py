@@ -26,9 +26,6 @@ for i in range(itibaren, kadar + 1):
 
     barcode_image = code.render(writer_options=options)
     barcode_width, barcode_height = barcode_image.size
-    # scaled_width = 800
-    # scaled_height = int(barcode_height * scaling_factor)
-    # barcode_image = barcode_image.resize((scaled_width, scaled_height), Image.LANCZOS)
 
     background_image = Image.open(directory + "/" + "bin" + "/" + "background.png")
     draw = ImageDraw.Draw(background_image)
@@ -38,10 +35,6 @@ for i in range(itibaren, kadar + 1):
 
     pos = (x_coord, y_coord)
     background_image.paste(barcode_image, pos)
-    # text_width, text_height = draw.textsize(str(i), font=font)
-    # text_x = int((background_width - text_width) / 2)
-    # text_y = int((background_height + barcode_height) / 2) + 20
-    # draw.text((text_x, text_y), str(i), fill=(0, 0, 0), font=font)
 
     filename = os.path.join(barcode_folder, f'barcode_{i}.png')
     background_image.save(filename)
